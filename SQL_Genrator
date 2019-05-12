@@ -1,0 +1,9 @@
+import xlrd
+
+excel_sheet = 'test.xlsx'
+Book1 = xlrd.open_workbook( excel_sheet )
+sheet1 = Book1.sheet_by_index( 0 )
+print( "Opened Sheet Name:", sheet1.name )
+column_headers = sheet1.row_values( 0 )
+for row in range( 1,sheet1.nrows ):
+    print( 'insert into  ' + str( sheet1.name ) + ' (' + str( column_headers ).strip( "[]" ) + ') values (' + str(sheet1.row_values(row)).strip( "[]" ) + ');')
